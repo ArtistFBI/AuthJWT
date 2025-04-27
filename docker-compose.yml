@@ -10,7 +10,7 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "taskuser", "-d", "taskdb"]
+      test: ["CMD", "pg_isready", "-U", "boilerplate", "-d", "boilerplate_db"]
       interval: 5s
       retries: 5
 
