@@ -1,0 +1,7 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+backend/__pycache__
+backend/app/__pycache__
+.vscode

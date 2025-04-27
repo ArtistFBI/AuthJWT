@@ -1,0 +1,85 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Light Theme Variables */
+:root {
+  --background-color: #eeefef;
+  --card-bg: #fffefe;
+  --content-bg: #f9f8f8;
+  --border-radius: 1rem;
+  --primary-color: #007BFF;
+  --secondary-color: #28A745;
+  --text-color: #2b2c2f;
+  --sidebar-bg: #fffefe;
+  --sidebar-selected: #efeff6;
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Poppins', sans-serif;
+  --hover-bg: #f3f4f6;
+  --input-bg: #fafafa;
+
+  /* Additional palette */
+  --clr-primary: #0084FF;
+  --clr-secondary: #47e5bc;
+  --clr-tertiary: #81e4da;
+  --clr-alternate: #e0e0e0;
+  --clr-primary-text: #474747;
+  --clr-secondary-text: #808080;
+  --clr-primary-bg: #f9f9f9;
+  --clr-secondary-bg: #f9f9f9;
+  --clr-dark-grey: rgb(97, 97, 97);
+  --clr-white: rgb(255, 255, 255);
+  --clr-very-light-grey: #f0efef;
+  --clr-medium-light-blue: #f5fcff;
+  --clr-black: #474747;
+  --clr-grey: rgb(124, 124, 124);
+}
+
+/* Global base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-speed, 0.3s), color var(--transition-speed, 0.3s);
+  font-family: var(--font-primary, 'Poppins', sans-serif);
+}
+
+/* Buttons */
+.button {
+  background-color: var(--primary-color);
+  color: var(--button-text-color, white);
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-speed, 0.3s);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color, #dbdbdb);
+  border-radius: 200rem;
+  transition: 0.15s all;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color, var(--clr-grey));
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color, transparent);
+}
+
+/* Reset buttons */
+button {
+  all: unset;
+  cursor: pointer;
+}
