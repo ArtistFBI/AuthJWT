@@ -1,7 +1,6 @@
 <template>
   <router-view v-slot="{ Component, route }">
-    <!-- If we're on login or register, show page directly -->
-    <component :is="Component" v-if="route.path === '/login' || route.path === '/register'" />
+    <component :is="Component" v-if="route.path === '/login'" />
     <div v-else>
       <component :is="Component" />
     </div>

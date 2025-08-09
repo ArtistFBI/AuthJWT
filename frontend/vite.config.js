@@ -28,7 +28,12 @@ export default defineConfig({
         target: 'http://backend:8000',
         changeOrigin: true,
         rewrite: (path) => path
-      }
+      },
+      '^/pkm/*': {
+        target: 'http://pkm_ui',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/pkm/, '')
+      },
     }
   }
 });

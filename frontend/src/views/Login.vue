@@ -9,9 +9,6 @@
             <input type="username" id="username" placeholder="Username" autocomplete="username" v-model.trim="username"
               class="input-field" :class="{ 'input-field-error': errorMessage }" />
           </div>
-
-
-          
           <div class="input-container">
             <div class="label-align">
               <label for="password" class="label">Password</label>
@@ -35,30 +32,6 @@
             <PrimaryButton :loading="loading">Login</PrimaryButton>
           </div>
         </form>
-        <p class="register-link">
-          No account yet?
-          <span @click="goToRegister" class="register-link-highlight">Register here.</span>
-        </p>
-        <p class="footerText">Made with
-          <!-- SVG for heart icon -->
-          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 107.39"
-            height="12">
-            <path fill="#ff4033" class="cls-1"
-              d="M60.83,17.18c8-8.35,13.62-15.57,26-17C110-2.46,131.27,21.26,119.57,44.61c-3.33,6.65-10.11,14.56-17.61,22.32-8.23,8.52-17.34,16.87-23.72,23.2l-17.4,17.26L46.46,93.55C29.16,76.89,1,55.92,0,29.94-.63,11.74,13.73.08,30.25.29c14.76.2,21,7.54,30.58,16.89Z" />
-          </svg> in
-          <!-- SVG for flag icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" height="12"
-            text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
-            clip-rule="evenodd" viewBox="0 0 43.06 29.96">
-            <g fill-rule="nonzero">
-              <path fill="#21468B"
-                d="M43.06 20v7.59c0 1.3-1.06 2.37-2.37 2.37H2.37C1.06 29.96 0 28.89 0 27.59V20h43.06z" />
-              <path fill="#fff" d="M43.06 20H0V2.37C0 1.06 1.06 0 2.37 0h38.32c1.31 0 2.37 1.06 2.37 2.37V20z" />
-              <path fill="#AE1C28" d="M43.06 9.96H0V2.37C0 1.06 1.06 0 2.37 0h38.32c1.31 0 2.37 1.06 2.37 2.37v7.59z" />
-            </g>
-          </svg>
-        </p>
-        <p class="version">Version 0.0.1</p>
       </div>
     </div>
   </Transition>
@@ -101,10 +74,6 @@ async function handleLogin() {
   } finally {
     loading.value = false
   }
-}
-
-function goToRegister() {
-  router.push('/register')
 }
 
 </script>
@@ -176,23 +145,6 @@ function goToRegister() {
 
 .input-field-error {
   border: 2px solid #D32F2F !important;
-}
-
-.register-link {
-  color: black;
-  display: block;
-  text-align: right;
-  margin-top: 1rem;
-}
-
-.register-link-highlight {
-  color: #0084FF;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.register-link-highlight:hover {
-  text-decoration: underline;
 }
 
 .footerText {

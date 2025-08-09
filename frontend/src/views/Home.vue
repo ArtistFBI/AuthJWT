@@ -1,24 +1,27 @@
 <template>
-    <div>
-        <h2>Welcome to the Portal</h2>
-        <p v-if="isLoggedIn">You are logged in with UUID: {{ userId }}</p>
-    </div>
     <div class="buttonWrapper">
-        <PrimaryButton @click="logout" class="button">Logout</PrimaryButton>
+      <p class="register-link">
+        <span @click="goToRegister" class="register-link-highlight">Зарегистрировать</span>
+      </p>
+      <PrimaryButton @click="logout" class="button">Выйти</PrimaryButton>
     </div>
 </template>
 
 <script setup>
 import { useAuthStore } from '@/stores/auth'
 import PrimaryButton from '@/components/ui/buttons/PrimaryButton.vue'
-const authStore = useAuthStore()
+import {useRouter} from "vue-router";
 
-const isLoggedIn = authStore.isLoggedIn
-const userId = authStore.userId
+const router = useRouter()
+const authStore = useAuthStore()
 
 const logout = () => {
     authStore.logout()
     window.location.href = '/login' // Redirect to login page after logout
+}
+
+const goToRegister = () => {
+    router.push('/register') // Redirect to register page
 }
 </script>
 
@@ -30,20 +33,36 @@ h2 {
 
 p {
     text-align: center;
-    margin-top: 10px;
+    margin-right: 10px;
     font-size: 18px;
 }
 
 .buttonWrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: right;
     height: 2.5rem;
     margin-top: 1rem;
-
+    margin-right: 1rem;
 }
 
 .button {
     width: 10rem;
+}
+
+.register-link {
+  color: black;
+  display: block;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.register-link-highlight {
+  color: #0084FF;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.register-link-highlight:hover {
+  text-decoration: underline;
 }
 </style>

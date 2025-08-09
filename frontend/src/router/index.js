@@ -4,6 +4,12 @@ import { useAuthStore } from '@/stores/auth'
 
 const routes = [
   {
+    path: '/',
+    name: 'Start',
+    component: () => import('@/views/Home.vue'), // Default page
+    meta: { requiresAuth: true }, // Route requires authentication
+  },
+  {
     path: '/home',
     name: 'Home',
     component: () => import('@/views/Home.vue'), // Lazy load HomeView component
@@ -17,9 +23,9 @@ const routes = [
   },
   {
     path: '/register',
-    name: 'register',
+    name: 'Register',
     component: () => import('@/views/Register.vue'), // Lazy load RegisterView component
-    meta: { requiresAuth: false }, // Route does not require authentication
+    meta: { requiresAuth: true }, // Route does not require authentication
   },
   {
     path: '/:pathMatch(.*)*',
@@ -35,14 +41,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // Check if the route requires authentication
-  // and if the user is logged in
-  // If the route requires authentication and the user is not logged in, redirect to login
-  // Otherwise, proceed to the route  
   const authStore = useAuthStore()
-  console.log("Is logged in " + authStore.isLoggedIn)
   if (to.meta.requiresAuth && !authStore.isLoggedIn) { // Check if logged in
-    console.log("Should be here if not logged in.")
     next({ name: 'Login' }) // Redirect to login if not authenticated
   } else if (to.name === 'Login' && authStore.isLoggedIn) {
     next({ name: 'Home' }) // Redirect to home if already logged in

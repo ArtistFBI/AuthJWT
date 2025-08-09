@@ -4,18 +4,18 @@
         <div class="container">
           <template v-if="!registrationSuccess">
             <!-- ✏️ Your Registration Form -->
-            <h1 class="title">Register</h1>
+            <h1 class="title">Регистрация аккаунта</h1>
             <form @submit.prevent="handleRegister">
               <div class="input-container">
-                <label for="username" class="label">Username</label>
-                <input type="text" id="username" placeholder="Username" autocomplete="username"
+                <label for="username" class="label">Имя</label>
+                <input type="text" id="username" placeholder="Введите имя" autocomplete="username"
                   v-model.trim="username" class="input-field"
                   :class="{ 'input-field-error': errorMessage }" />
               </div>
   
               <div class="input-container">
-                <label for="password" class="label">Password</label>
-                <input type="password" id="password" placeholder="Password" autocomplete="current-password"
+                <label for="password" class="label">Пароль</label>
+                <input type="password" id="password" placeholder="Введите пароль" autocomplete="current-password"
                   v-model.trim="password" class="input-field"
                   :class="{ 'input-field-error': errorMessage }" />
               </div>
@@ -29,28 +29,28 @@
               </div>
   
               <div class="buttonWrapper">
-                <PrimaryButton :loading="loading" @click="handleRegister">Register</PrimaryButton>
+                <PrimaryButton :loading="loading" @click="handleRegister">Зарегистрировать</PrimaryButton>
               </div>
             </form>
   
             <p class="register-link">
-              Do you have an account?
-              <span @click="goToLogin" class="register-link-highlight">Login here.</span>
+              Передумали?
+              <span @click="abort" class="register-link-highlight">Вернуться</span>
             </p>
           </template>
   
           <template v-else>
             <!-- ✅ Success screen after registration -->
-            <h1 class="title">Account Created 🎉</h1>
-            <p class="confirmation-message">Your account has been successfully created!</p>
+            <h1 class="title">Аккаунт создан 🎉</h1>
+            <p class="confirmation-message">Новый пользователь зарегистрирован!</p>
   
             <div class="buttonWrapper">
-              <PrimaryButton @click="goToLogin">Go to Login</PrimaryButton>
+              <PrimaryButton @click="goToLogin">Войти</PrimaryButton>
             </div>
           </template>
         </div>
       </div>
-    </Transition>
+   </Transition>
   </template>
   
   <script setup>
@@ -84,6 +84,10 @@
   
   function goToLogin() {
     router.push('/login')
+  }
+
+  function abort() {
+    router.back()
   }
   
   // 🆕 Handle pressing Enter after successful registration
