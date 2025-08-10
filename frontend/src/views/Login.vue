@@ -46,6 +46,7 @@ import { jwtDecode } from 'jwt-decode'
 import { loginUser } from '@/api/authApi'
 import { useAuthStore } from '@/stores/auth'
 import PrimaryButton from '@/components/ui/buttons/PrimaryButton.vue'
+import VueCookies from "vue-cookies";
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -66,6 +67,9 @@ async function handleLogin() {
     const decoded = jwtDecode(result.access_token)
     const userId = decoded.sub
     authStore.login(userId, result.access_token, result.refresh_token)
+    VueCookies.set("uid", userId)
+    VueCookies.set("access_token", result.access_token)
+    VueCookies.set("refresh_token", result.refresh_token)
 
     router.push('/home') // ✅ use router object
   } catch (err) {

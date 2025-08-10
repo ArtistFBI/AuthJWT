@@ -8,6 +8,8 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 // Import the router
 import router from '@/router'
 
+import VueCookies from 'vue-cookies'
+
 // Import global styles
 import '@/assets/global.css'
 
@@ -20,6 +22,7 @@ pinia.use(piniaPluginPersistedstate)
 // Install plugins
 app.use(pinia)
 app.use(router)
+app.use(VueCookies)
 
 // Mount the app
 app.mount('#app')

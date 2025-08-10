@@ -5,18 +5,23 @@
       </p>
       <PrimaryButton @click="logout" class="button">Выйти</PrimaryButton>
     </div>
+  <a href="http://sphera-it.space:5100">ПК МКС</a>
 </template>
 
 <script setup>
 import { useAuthStore } from '@/stores/auth'
 import PrimaryButton from '@/components/ui/buttons/PrimaryButton.vue'
 import {useRouter} from "vue-router";
+import VueCookies from "vue-cookies";
 
 const router = useRouter()
 const authStore = useAuthStore()
 
 const logout = () => {
     authStore.logout()
+    VueCookies.remove("uid")
+    VueCookies.remove("access_token")
+    VueCookies.remove("refresh_token")
     window.location.href = '/login' // Redirect to login page after logout
 }
 

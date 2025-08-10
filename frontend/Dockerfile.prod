@@ -1,10 +1,8 @@
-FROM node:18
+FROM node:alpine
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+# RUN npm run build
 COPY . .
-
-# Install missing modules if volume mount wiped them
-RUN test -d node_modules || npm install
 
 CMD ["npm", "run", "dev", "--", "--host"]

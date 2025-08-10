@@ -6,7 +6,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.prod
     ports:
-      - "8088:80"
+      - "81:5173"
     depends_on:
       - backend
     restart: unless-stopped
