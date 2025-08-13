@@ -5,7 +5,7 @@
       </p>
       <PrimaryButton @click="logout" class="button">Выйти</PrimaryButton>
     </div>
-  <a href="http://sphera-it.space:5100">ПК МКС</a>
+  <a href="http://pkm.sphera-it.space">ПК МКС</a>
 </template>
 
 <script setup>
@@ -19,9 +19,9 @@ const authStore = useAuthStore()
 
 const logout = () => {
     authStore.logout()
-    VueCookies.remove("uid")
-    VueCookies.remove("access_token")
-    VueCookies.remove("refresh_token")
+    VueCookies.remove("uid", '/','.sphera-it.space')
+    VueCookies.remove("access_token",  '/', '.sphera-it.space')
+    VueCookies.remove("refresh_token",  '/', '.sphera-it.space')
     window.location.href = '/login' // Redirect to login page after logout
 }
 

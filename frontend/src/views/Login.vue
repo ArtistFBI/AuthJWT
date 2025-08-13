@@ -67,9 +67,9 @@ async function handleLogin() {
     const decoded = jwtDecode(result.access_token)
     const userId = decoded.sub
     authStore.login(userId, result.access_token, result.refresh_token)
-    VueCookies.set("uid", userId)
-    VueCookies.set("access_token", result.access_token)
-    VueCookies.set("refresh_token", result.refresh_token)
+    VueCookies.set("uid", userId, '1d', '/', '.sphera-it.space')
+    VueCookies.set("access_token", result.access_token, '1d', '/', '.sphera-it.space')
+    VueCookies.set("refresh_token", result.refresh_token, '1d', '/', '.sphera-it.space')
 
     router.push('/home') // ✅ use router object
   } catch (err) {

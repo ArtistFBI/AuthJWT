@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/auth.js'
+import VueCookies from 'vue-cookies'
 
 const routes = [
   {
@@ -39,6 +40,12 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 })
+
+const uuid = VueCookies.get('uid'),
+    accessToken = VueCookies.get("access_token"),
+    refreshToken = VueCookies.get("refresh_token"),
+    auth = useAuthStore();
+if (!accessToken || !refreshToken || !uuid) auth.logout();
 
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
